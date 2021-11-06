@@ -9,12 +9,12 @@ package trabajofinalgrupo1;
  *
  * @author EDISON
  */
-public class Mantenimiento extends javax.swing.JPanel {
+public class jFrmRegistroMantenimiento extends javax.swing.JPanel {
 
     /**
      * Creates new form Mantenimiento
      */
-    public Mantenimiento() {
+    public jFrmRegistroMantenimiento() {
         initComponents();
     }
 
