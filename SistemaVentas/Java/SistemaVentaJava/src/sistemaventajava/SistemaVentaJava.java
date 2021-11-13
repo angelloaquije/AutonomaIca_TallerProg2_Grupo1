@@ -1,17 +1,42 @@
 
 package sistemaventajava;
 
-/**
- *
- * @author Angello Abraham
- */
-public class SistemaVentaJava {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-    /**
-     * @param args the command line arguments
-     */
+
+public class SistemaVentaJava {
+    public static final String USER = "root";
+    public static final String CLAVE = "";
+    public static final String URL = "jdbc:mysql://localhost:3306/Ventas";
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);
+            
+            
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM TipoDocumento");
+            
+            while (rs.next()){
+                System.out.println( String.valueOf(rs.getInt("IdTipoDocumento"))  + "\t" + rs.getString("NombreTipoDocumento") );
+                
+            }
+            
+        }
+        
+        catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
     }
-    
 }
+
+
