@@ -8,7 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import sistemaventajava.Negocio.Entidades.Cliente;
+import sistemaventajava.Negocio.Entidades.DetalleVenta;
 import sistemaventajava.Negocio.Entidades.Producto;
+import sistemaventajava.Negocio.Entidades.TipoDocumento;
+import sistemaventajava.Negocio.Entidades.TipoVenta;
+import sistemaventajava.Negocio.Entidades.Venta;
 import static sistemaventajava.SistemaVentaJava.CLAVE;
 import static sistemaventajava.SistemaVentaJava.URL;
 import static sistemaventajava.SistemaVentaJava.USER;
@@ -84,7 +88,121 @@ public class Datos {
             
         }
         
-        return clientes;
+        return productos;
     }
     
+    public List<TipoDocumento> ListarTiposDocumentos(){
+        List<TipoDocumento> tiposdocumentos = new ArrayList<>();
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM TipoDocumento");
+            
+            while(rs.next()){
+                TipoDocumento item = new TipoDocumento();
+                item.IdTipoDocumento = rs.getInt("IdTipoDocumento");
+                item.NombreTipoDocumento = rs.getString("NombreTipoDocumento");
+
+                tiposdocumentos.add(item);
+                
+            }
+            
+            con.close();
+            con = null;
+            
+        }catch(Exception ex){
+            
+        }
+        
+        return tiposdocumentos;
+    }
+    
+    public List<TipoVenta> ListarTiposVentas(){
+        List<TipoVenta> tiposventas = new ArrayList<>();
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM TipoVenta");
+            
+            while(rs.next()){
+                TipoVenta item = new TipoVenta();
+                item.IdTIpoVenta = rs.getInt("IdTIpoVenta");
+                item.TipoVenta = rs.getString("TipoVenta");
+
+                tiposventas.add(item);
+            }
+            con.close();
+            con = null;
+            
+        }catch(Exception ex){
+            
+        }
+        
+        return tiposventas;
+    }
+    
+    public List<Venta> ListarVentas(){
+        List<Venta> ventas = new ArrayList<>();
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM Venta");
+            
+            while(rs.next()){
+                Venta item = new Venta();
+                item.IdVenta=rs.getInt("IdVenta");
+                item.IdTipoVenta=rs.getInt("IdTipoVenta");
+                item.IdCliente=rs.getInt("IdCliente");
+                item.FechaVenta=rs.getDate("FechaVenta");
+                item.TotalVenta=rs.getDouble("TotalVenta");
+
+                ventas.add(item);
+            }
+            con.close();
+            con = null;
+            
+        }catch(Exception ex){
+            
+        }
+        
+        return ventas;
+    }
+    
+    public List<DetalleVenta> ListarDetallesVenta(){
+        List<DetalleVenta> detallesventa = new ArrayList<>();
+        
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM Venta");
+            
+            while(rs.next()){
+                DetalleVenta item = new DetalleVenta();
+                item.IdDetalleVenta=rs.getInt("IdDetalleVenta");
+                item.IdVenta=rs.getInt("IdVenta");
+                item.IdProducto=rs.getInt("IdProducto");
+                item.PrecioUnitario=rs.getDouble("PrecioUnitario");
+                item.Cantidad=rs.getInt("Cantidad");
+                item.SubTotal=rs.getDouble("SubTotal");
+
+                
+
+                detallesventa.add(item);
+            }
+            con.close();
+            con = null;
+            
+        }catch(Exception ex){
+            
+        }
+        
+        return detallesventa;
+    }
 }
