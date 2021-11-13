@@ -5,6 +5,11 @@
  */
 package sistemaventajava.Presentacion;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import sistemaventajava.Datos.Datos;
+import sistemaventajava.Negocio.Entidades.TipoDocumento;
+
 /**
  *
  * @author Angello Abraham
@@ -16,6 +21,18 @@ public class jFrmMostrarTipoDocumento extends javax.swing.JFrame {
      */
     public jFrmMostrarTipoDocumento() {
         initComponents();
+        
+        Datos datos = new Datos();
+        
+        List<TipoDocumento> lstTipoDoc = datos.ListarTiposDocumentos();
+        
+        DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+        for(TipoDocumento item : lstTipoDoc){
+            model.addRow(new Object[] { item.IdTipoDocumento, item.NombreTipoDocumento  });
+            
+        }
+        
+        
     }
 
     /**
@@ -31,21 +48,33 @@ public class jFrmMostrarTipoDocumento extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Mostrar Tipos de Documentos");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Tipo de Documento", "Tipo de Documento"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
