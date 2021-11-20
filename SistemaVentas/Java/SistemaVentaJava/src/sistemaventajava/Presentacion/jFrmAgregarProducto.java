@@ -37,7 +37,7 @@ public class jFrmAgregarProducto extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Agregar Producto");
 
