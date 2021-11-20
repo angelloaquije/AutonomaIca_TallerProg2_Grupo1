@@ -5,6 +5,10 @@
  */
 package sistemaventajava.Presentacion;
 
+import java.util.List;
+import sistemaventajava.Datos.Datos;
+import sistemaventajava.Negocio.Entidades.TipoVenta;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Angello Abraham
@@ -16,7 +20,18 @@ public class jFrmMostrarTipoVenta extends javax.swing.JFrame {
      */
     public jFrmMostrarTipoVenta() {
         initComponents();
+        
+        Datos datos = new Datos() ;
+        
+        List<TipoVenta> lstTipoDoc = datos.ListarTiposVentas();
+        
+        DefaultTableModel model =(DefaultTableModel) this.jTable1.getModel();
+        for(TipoVenta item : lstTipoDoc){
+            model.addRow(new Object [] { item.IdTIpoVenta, item.TipoVenta  }); 
+        }
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,15 +52,20 @@ public class jFrmMostrarTipoVenta extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "TIPO DE VENTA"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -53,14 +73,12 @@ public class jFrmMostrarTipoVenta extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabel1)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(118, 118, 118)
+                .addComponent(jLabel1)
+                .addContainerGap(154, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,7 +87,7 @@ public class jFrmMostrarTipoVenta extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
