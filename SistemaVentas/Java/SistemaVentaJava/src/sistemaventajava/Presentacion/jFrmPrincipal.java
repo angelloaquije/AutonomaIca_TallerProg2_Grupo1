@@ -200,6 +200,8 @@ public class jFrmPrincipal extends javax.swing.JFrame {
 
     private void mnuIMostrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIMostrarProductosActionPerformed
         // TODO add your handling code here:
+        new JFrmMostrarProductos().setVisible(true);
+        
         
     }//GEN-LAST:event_mnuIMostrarProductosActionPerformed
 

@@ -73,7 +73,7 @@ public class Datos {
                 
                 item.IdProducto=rs.getInt("IdProducto");
                 item.Nombre=rs.getString("Nombre");
-                item.Descripción=rs.getString("Descripción");
+                item.Descripción=rs.getString("Descripcion");
                 item.Stock=rs.getInt("Stock");
                 item.Precio=rs.getDouble("Precio");
 
@@ -234,6 +234,25 @@ public class Datos {
             preparedStmt.execute();
             con.close();
         }catch (Exception ex){
+            
+        }
+    }
+    
+    public void InsertarProducto (Producto producto){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);
+            String sql ="INSERT INTO producto (Nombre,Descripcion,Stock,Precio ) VALUES (?,?,?,?)";
+            PreparedStatement  preparedStmt = con.prepareStatement(sql);
+            preparedStmt.setString(1, producto.Nombre);
+            preparedStmt.setString(2, producto.Descripción);
+            preparedStmt.setInt(3, producto.Stock);
+            preparedStmt.setDouble(4, producto.Precio);
+            
+            preparedStmt.execute();
+            con.close();
+            
+        }catch(Exception ex){
             
         }
     }
