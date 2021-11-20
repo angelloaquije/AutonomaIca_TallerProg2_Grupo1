@@ -57,6 +57,11 @@ public class jFrmPrincipal extends javax.swing.JFrame {
         mnuVentas.add(mnuIAgregarVenta);
 
         mnuIMostrarVentas.setText("Mostrar Ventas");
+        mnuIMostrarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuIMostrarVentasActionPerformed(evt);
+            }
+        });
         mnuVentas.add(mnuIMostrarVentas);
 
         jMenuBar1.add(mnuVentas);
@@ -87,6 +92,11 @@ public class jFrmPrincipal extends javax.swing.JFrame {
         mnuProductos.add(mnuIAgregarProducto);
 
         mnuIMostrarProductos.setText("Mostrar Productos");
+        mnuIMostrarProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuIMostrarProductosActionPerformed(evt);
+            }
+        });
         mnuProductos.add(mnuIMostrarProductos);
 
         jMenuBar1.add(mnuProductos);
@@ -102,6 +112,11 @@ public class jFrmPrincipal extends javax.swing.JFrame {
         mnuTiposDoc.add(mnuIAgregarTipoDoc);
 
         mnuIMostrarTiposDoc.setText("Mostrar Tipos de Doc.");
+        mnuIMostrarTiposDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuIMostrarTiposDocActionPerformed(evt);
+            }
+        });
         mnuTiposDoc.add(mnuIMostrarTiposDoc);
 
         jMenuBar1.add(mnuTiposDoc);
@@ -117,6 +132,11 @@ public class jFrmPrincipal extends javax.swing.JFrame {
         mnuTiposVentas.add(mnuIAgregarTipoVenta);
 
         mnuIMostrarTiposVenta.setText("Mostrar Tipos de Ventas");
+        mnuIMostrarTiposVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuIMostrarTiposVentaActionPerformed(evt);
+            }
+        });
         mnuTiposVentas.add(mnuIMostrarTiposVenta);
 
         jMenuBar1.add(mnuTiposVentas);
@@ -161,6 +181,27 @@ public class jFrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         new JFrmAgregarTipoVenta().setVisible(true);
     }//GEN-LAST:event_mnuIAgregarTipoVentaActionPerformed
+
+    private void mnuIMostrarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIMostrarVentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuIMostrarVentasActionPerformed
+
+    private void mnuIMostrarTiposDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIMostrarTiposDocActionPerformed
+        // TODO add your handling code here:
+        new jFrmMostrarTipoDocumento().setVisible(true);
+       
+    }//GEN-LAST:event_mnuIMostrarTiposDocActionPerformed
+
+    private void mnuIMostrarTiposVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIMostrarTiposVentaActionPerformed
+        // TODO add your handling code here:
+        new jFrmMostrarTipoVenta().setVisible(true);
+       
+    }//GEN-LAST:event_mnuIMostrarTiposVentaActionPerformed
+
+    private void mnuIMostrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuIMostrarProductosActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_mnuIMostrarProductosActionPerformed
 
     /**
      * @param args the command line arguments

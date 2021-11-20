@@ -113,7 +113,7 @@ public class Datos {
             con = null;
             
         }catch(Exception ex){
-            
+            System.out.println(ex.getMessage());
         }
         
         return tiposdocumentos;
