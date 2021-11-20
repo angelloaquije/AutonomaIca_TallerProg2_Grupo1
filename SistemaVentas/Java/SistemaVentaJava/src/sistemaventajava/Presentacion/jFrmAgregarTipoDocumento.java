@@ -5,6 +5,10 @@
  */
 package sistemaventajava.Presentacion;
 
+import javax.swing.JOptionPane;
+import sistemaventajava.Datos.Datos;
+import sistemaventajava.Negocio.Entidades.TipoDocumento;
+
 /**
  *
  * @author Angello Abraham
@@ -29,8 +33,8 @@ public class jFrmAgregarTipoDocumento extends javax.swing.JFrame {
 
         label1 = new java.awt.Label();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTxtTipoDocumento = new javax.swing.JTextField();
+        jBtnAgregarTipoDocumento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -38,7 +42,12 @@ public class jFrmAgregarTipoDocumento extends javax.swing.JFrame {
 
         jLabel1.setText("Tipo de Documento:");
 
-        jButton1.setText("Agregar");
+        jBtnAgregarTipoDocumento.setText("Agregar");
+        jBtnAgregarTipoDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAgregarTipoDocumentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,10 +63,10 @@ public class jFrmAgregarTipoDocumento extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTxtTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addComponent(jButton1)))
+                        .addComponent(jBtnAgregarTipoDocumento)))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -65,17 +74,32 @@ public class jFrmAgregarTipoDocumento extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jBtnAgregarTipoDocumento)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnAgregarTipoDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAgregarTipoDocumentoActionPerformed
+        // TODO add your handling code here:
+        
+        Datos datos = new Datos();
+        TipoDocumento nuevoTipoDocumento = new TipoDocumento();
+        nuevoTipoDocumento.NombreTipoDocumento = this.jTxtTipoDocumento.getText();
+        
+        datos.InsertarTipoDocumento(nuevoTipoDocumento);
+        
+        JOptionPane.showMessageDialog(null, "Se guardaron los datos.");
+        this.jBtnAgregarTipoDocumento.setEnabled(false);
+        
+        
+    }//GEN-LAST:event_jBtnAgregarTipoDocumentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,9 +137,9 @@ public class jFrmAgregarTipoDocumento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBtnAgregarTipoDocumento;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTxtTipoDocumento;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

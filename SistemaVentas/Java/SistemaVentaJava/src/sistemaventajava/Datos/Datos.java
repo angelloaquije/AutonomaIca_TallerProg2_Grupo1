@@ -3,6 +3,7 @@ package sistemaventajava.Datos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -204,5 +205,36 @@ public class Datos {
         }
         
         return detallesventa;
+    }
+    
+    public void InsertarTipoVenta( TipoVenta tipoVenta ){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);
+            String sql ="INSERT INTO tipoventa (TipoVenta) VALUES (?)";
+            PreparedStatement  preparedStmt = con.prepareStatement(sql);
+            preparedStmt.setString(1, tipoVenta.TipoVenta);
+            
+            preparedStmt.execute();
+            con.close();
+            
+        }catch(Exception e){
+            
+        }
+    }
+    
+    public void InsertarTipoDocumento( TipoDocumento tipoDocumento ){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection(URL, USER, CLAVE);  
+            String sql ="INSERT INTO tipodocumento (NombreTipoDocumento) VALUES (?)";
+            PreparedStatement  preparedStmt = con.prepareStatement(sql);
+            preparedStmt.setString(1, tipoDocumento.NombreTipoDocumento);
+            
+            preparedStmt.execute();
+            con.close();
+        }catch (Exception ex){
+            
+        }
     }
 }

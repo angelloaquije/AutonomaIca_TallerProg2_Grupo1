@@ -5,6 +5,10 @@
  */
 package sistemaventajava.Presentacion;
 
+import javax.swing.JOptionPane;
+import sistemaventajava.Datos.Datos;
+import sistemaventajava.Negocio.Entidades.TipoVenta;
+
 /**
  *
  * @author Angello Abraham
@@ -29,8 +33,8 @@ public class JFrmAgregarTipoVenta extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTxtTipoVenta = new javax.swing.JTextField();
+        jBtnAgregarTipoVenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setType(java.awt.Window.Type.POPUP);
@@ -39,7 +43,12 @@ public class JFrmAgregarTipoVenta extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo de Venta:");
 
-        jButton1.setText("Agregar");
+        jBtnAgregarTipoVenta.setText("Agregar");
+        jBtnAgregarTipoVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAgregarTipoVentaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,8 +64,8 @@ public class JFrmAgregarTipoVenta extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jBtnAgregarTipoVenta)
+                            .addComponent(jTxtTipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -67,14 +76,28 @@ public class JFrmAgregarTipoVenta extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtTipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(jButton1)
+                .addComponent(jBtnAgregarTipoVenta)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnAgregarTipoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAgregarTipoVentaActionPerformed
+        // TODO add your handling code here:
+        Datos datos = new Datos();
+        
+        TipoVenta nuevoTipoVenta =  new TipoVenta();
+        nuevoTipoVenta.TipoVenta = this.jTxtTipoVenta.getText();
+        
+        datos.InsertarTipoVenta(nuevoTipoVenta);
+        
+        JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
+        this.jBtnAgregarTipoVenta.setEnabled(false);
+        
+    }//GEN-LAST:event_jBtnAgregarTipoVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,9 +135,9 @@ public class JFrmAgregarTipoVenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBtnAgregarTipoVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTxtTipoVenta;
     // End of variables declaration//GEN-END:variables
 }
